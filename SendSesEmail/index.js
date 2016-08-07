@@ -15,6 +15,12 @@ exports.handler = function (event, context) {
         return;
     }
 
+    if (event.toemail == null) {
+        context.fail('Bad Request: Missing required member: email');
+        return;
+    }
+
+
     var config = require('./config.js');
     
     // Make sure some expected results are present
@@ -70,7 +76,7 @@ exports.handler = function (event, context) {
             var params = {
                 Destination: {
                     ToAddresses: [
-                        config.targetAddress
+                        event.toemail
                     ]
                 },
                 Message: {
@@ -113,7 +119,7 @@ exports.handler = function (event, context) {
                     context.fail('Internal Error: The email could not be sent.');
                 } else {
                     console.log(data);           // successful response
-                    context.succeed('The email was successfully sent to ' + event.email);
+                    context.succeed('The email was successfully sent to ' + event.toemail);
                 }
             });
         }

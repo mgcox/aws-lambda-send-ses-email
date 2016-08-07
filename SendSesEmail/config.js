@@ -1,10 +1,10 @@
 ﻿"use strict";
 
 var config = {
-    "templateBucket" : "my-bucket",
+    "templateBucket" : "tagdemailtemplates",
     "templateKey" : "Templates/Template.html",
-    "targetAddress" : "my-email@domain.com",
-    "fromAddress": "Me <my-email@domain.com>",
+    "targetAddress" : "{{toemail}}",
+    "fromAddress": "Me <test@tagdsocial.com>",
     "defaultSubject" : "Email From {{name}}"
 }
 
